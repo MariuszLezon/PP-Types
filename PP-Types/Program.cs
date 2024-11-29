@@ -1,22 +1,33 @@
-﻿// Write required code.
-
-// Data - do not change it in code!
+﻿// Data - do not change it in code!
 string[] names = {
-    "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala", 
-    "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston", 
-    "Cinderella", "Prince Charming", "Aurora", "Maleficent", "Rapunzel", "Flynn Rider", "Elsa", "Anna", 
+    "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala",
+    "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston",
+    "Cinderella", "Prince Charming", "Aurora", "Maleficent", "Rapunzel", "Flynn Rider", "Elsa", "Anna",
     "Olaf", "Moana", "Maui", "Hercules"
 };
 
 
 // Print all array elements, *perLine* elements per one line
 // After all elements except last one should be ", " - also on the end of lines.
-// After last element should be ".".
+// After last element should be "."
 void PrintGroups(string[] t, int perLine)
 {
-
-    // Write required code.
-
+    for (int i = 0; i < t.Length; i++)
+    {
+        Console.Write(t[i]);
+        if (i < t.Length - 1) // Not the last element
+        {
+            Console.Write(", ");
+            if ((i + 1) % perLine == 0) // New line after *perLine* elements
+            {
+                Console.WriteLine();
+            }
+        }
+        else
+        {
+            Console.WriteLine("."); // Last element ends with "."
+        }
+    }
 }
 
 
@@ -27,9 +38,25 @@ void PrintGroups(string[] t, int perLine)
 
 void PrintColumns(string[] t, int perLine, int width)
 {
+    for (int i = 0; i < t.Length; i++)
+    {
+        // Trim or pad each element to the specified width
+        string element = t[i].Length > width ? t[i].Substring(0, width) : t[i].PadRight(width);
 
-    // Write required code.
+        Console.Write(element);
 
+        // Print separator if not the last column in a row
+        if ((i + 1) % perLine != 0 && i < t.Length - 1)
+        {
+            Console.Write(" | ");
+        }
+
+        // New line after *perLine* columns or at the end of the array
+        if ((i + 1) % perLine == 0 || i == t.Length - 1)
+        {
+            Console.WriteLine();
+        }
+    }
 }
 
 
